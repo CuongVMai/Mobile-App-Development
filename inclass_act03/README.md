@@ -1,17 +1,18 @@
 # inclass_act03
 
-A new Flutter project.
+# 🪄 Spell Spam Bar (Flutter)
 
-## Getting Started
+A fantasy-themed interactive spell control app built with Flutter & Dart, designed to simulate a magic ability bar with responsive visual feedback and state-based interactions.
 
-This project is a starting point for a Flutter application.
+## ✨ Features
+- **Interactive Spell Buttons**: Custom buttons for casting spells such as attack, shield, healing, and teleport abilities.
+- **Mana System**: A dynamic mana slider that represents the player's current magic capacity.
+- **Color-Based Feedback**: The mana bar and background change colors depending on the current mana level.
+- **Live Spell Status**: Displays the most recently activated spell and tracks the total number of spells cast.
+- **Adaptive Theme System**: Supports both dark and light mode using Flutter's theme system.
+- **Reusable Button Design**: Uses a custom `TactileButton` widget with press animations and visual effects.
 
-A few resources to get you started if this is your first Flutter project:
-
-- [Learn Flutter](https://docs.flutter.dev/get-started/learn-flutter)
-- [Write your first Flutter app](https://docs.flutter.dev/get-started/codelab)
-- [Flutter learning resources](https://docs.flutter.dev/reference/learning-resources)
-
-For help getting started with Flutter development, view the
-[online documentation](https://docs.flutter.dev/), which offers tutorials,
-samples, guidance on mobile development, and a full API reference.
+## 🛠️ Tech Stack
+- **Framework**: Flutter (Material 3)
+- **Language**: Dart
+- **Key Widgets**: `StatefulWidget`, `GestureDetector`, `AnimatedContainer`, `Slider`, `Wrap`, `Scaffold`
