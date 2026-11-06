@@ -1,0 +1,29 @@
+{
+  "project_info": {
+    "project_number": "119932005721",
+    "project_id": "auth-lab-13",
+    "storage_bucket": "auth-lab-13.firebasestorage.app"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:119932005721:android:c49cb92472107c2d543048",
+        "android_client_info": {
+          "package_name": "com.example.auth_lab_13"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyCh3cfckKw9BDdcUdYXRCedbZHYnpFlPUw"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
