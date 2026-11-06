@@ -1,17 +1,21 @@
 # auth_lab_13
 
-A new Flutter project.
+This is a Flutter Android app that uses Firebase Authentication (email/password). Users can register, sign in, view their profile, change their password, and sign out.
 
-## Getting Started
+Features:
 
-This project is a starting point for a Flutter application.
+Register / Sign in on one screen, with email format and 6+ character password validation
+Loading spinner + disabled buttons while requests run, so users can’t double-submit
+Friendly error messages (wrong password, email already in use, no connection) with no raw exception text
+AuthGate uses authStateChanges() to switch between the Sign in and Profile screens automatically, so signed-out users can’t reach Profile, even with the Back button
+Session restoration: users stay signed in after restarting the app
+Profile screen shows the current user’s email, with Sign out and Update password
+Password update handles requires-recent-login by asking for the current password, re-authenticating, and retrying
 
-A few resources to get you started if this is your first Flutter project:
+Structure: all auth actions are centralized in AuthService (register, sign in, sign out, change password, reauthenticate, current user, auth stream). Firebase is initialized in main.dart before runApp().
 
-- [Learn Flutter](https://docs.flutter.dev/get-started/learn-flutter)
-- [Write your first Flutter app](https://docs.flutter.dev/get-started/codelab)
-- [Flutter learning resources](https://docs.flutter.dev/reference/learning-resources)
+Tested on the Android emulator: invalid inputs, registration, session restoration, sign-out access blocking, wrong password, duplicate account, password change (old password fails, new one works), and the recent-login re-authentication pop-up (observed after about 5 minutes).
 
-For help getting started with Flutter development, view the
-[online documentation](https://docs.flutter.dev/), which offers tutorials,
-samples, guidance on mobile development, and a full API reference.
+Submitted: GitHub repo link, app-release.apk, and the reflection/evidence document.
+
+AI use: ChatGPT for the flow/test comparison; Claude help in fixing the app when my code did not go through correctly by correcting the outline of the code.
