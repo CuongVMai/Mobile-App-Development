@@ -1,17 +1,47 @@
-# ica16_science_signal
+# Science Signal B (In-Class Activity 16)
 
-A new Flutter project.
+A Flutter science quiz that uses Open Trivia Database, Firebase Authentication, and Cloud Firestore.
 
-## Getting Started
+## Features
+- Email/password sign-in using Firebase.
+- Loads 5 Science & Nature True/False questions.
+- Shows correct and incorrect answers.
+- Saves quiz results to Firestore.
+- Verifies saved results with "Cloud verified."
+- Allows users to view previous attempts.
+- Includes error handling and a debug testing panel.
 
-This project is a starting point for a Flutter application.
+## Setup and Run
 
-A few resources to get you started if this is your first Flutter project:
+1. Set up Firebase Authentication and Cloud Firestore.
+2. Enable Email/Password sign-in.
+3. Publish the rules from `firestore.rules`.
+4. Run these commands:
 
-- [Learn Flutter](https://docs.flutter.dev/get-started/learn-flutter)
-- [Write your first Flutter app](https://docs.flutter.dev/get-started/codelab)
-- [Flutter learning resources](https://docs.flutter.dev/reference/learning-resources)
+```bash
+flutter pub get
+flutterfire configure --platforms=android
+flutter run
+```
 
-For help getting started with Flutter development, view the
-[online documentation](https://docs.flutter.dev/), which offers tutorials,
-samples, guidance on mobile development, and a full API reference.
+## Testing
+
+1. Sign in with a test account.
+2. Complete all 5 questions.
+3. Submit the results and check for "Cloud verified."
+4. Sign out and restart the app.
+5. Sign back in and check previous attempts using the cloud icon.
+
+## APK
+
+Build using:
+
+```bash
+flutter build apk --release
+```
+
+APK name: `ICA16_B_CuongMai.apk`
+
+## AI Use
+
+I used Claude to help fix errors when the app was not working or failed to launch.
