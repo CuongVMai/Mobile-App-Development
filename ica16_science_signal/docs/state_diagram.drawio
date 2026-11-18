@@ -1,0 +1,113 @@
+<mxfile host="app.diagrams.net">
+  <diagram name="Science Signal B state machine" id="ica16b">
+    <mxGraphModel dx="1184" dy="775" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="900" pageHeight="820" math="0" shadow="0">
+      <root>
+        <mxCell id="0" />
+        <mxCell id="1" parent="0" />
+        <mxCell id="signedOut" parent="1" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#dae8fc;strokeColor=#6c8ebf;fontStyle=1;" value="signedOut" vertex="1">
+          <mxGeometry height="44" width="180" x="340" y="40" as="geometry" />
+        </mxCell>
+        <mxCell id="loading" parent="1" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#dae8fc;strokeColor=#6c8ebf;fontStyle=1;" value="loading" vertex="1">
+          <mxGeometry height="44" width="180" x="340" y="140" as="geometry" />
+        </mxCell>
+        <mxCell id="playing" parent="1" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#dae8fc;strokeColor=#6c8ebf;fontStyle=1;" value="playing" vertex="1">
+          <mxGeometry height="44" width="180" x="340" y="240" as="geometry" />
+        </mxCell>
+        <mxCell id="ready" parent="1" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#dae8fc;strokeColor=#6c8ebf;fontStyle=1;" value="readyToSubmit" vertex="1">
+          <mxGeometry height="44" width="180" x="340" y="340" as="geometry" />
+        </mxCell>
+        <mxCell id="submitting" parent="1" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#dae8fc;strokeColor=#6c8ebf;fontStyle=1;" value="submitting" vertex="1">
+          <mxGeometry height="44" width="180" x="340" y="440" as="geometry" />
+        </mxCell>
+        <mxCell id="verifying" parent="1" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#dae8fc;strokeColor=#6c8ebf;fontStyle=1;" value="verifying" vertex="1">
+          <mxGeometry height="44" width="180" x="340" y="560" as="geometry" />
+        </mxCell>
+        <mxCell id="verified" parent="1" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#d5e8d4;strokeColor=#82b366;fontStyle=1;" value="cloudVerified" vertex="1">
+          <mxGeometry height="44" width="180" x="340" y="690" as="geometry" />
+        </mxCell>
+        <mxCell id="authError" parent="1" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#f8cecc;strokeColor=#b85450;" value="authError" vertex="1">
+          <mxGeometry height="44" width="200" x="640" y="40" as="geometry" />
+        </mxCell>
+        <mxCell id="requestError" parent="1" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#f8cecc;strokeColor=#b85450;" value="requestError" vertex="1">
+          <mxGeometry height="44" width="200" x="640" y="140" as="geometry" />
+        </mxCell>
+        <mxCell id="permissionDenied" parent="1" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#f8cecc;strokeColor=#b85450;" value="permissionDenied" vertex="1">
+          <mxGeometry height="44" width="200" x="640" y="390" as="geometry" />
+        </mxCell>
+        <mxCell id="saveUnknown" parent="1" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#ffe6cc;strokeColor=#d79b00;" value="saveUnknown" vertex="1">
+          <mxGeometry height="44" width="200" x="640" y="480" as="geometry" />
+        </mxCell>
+        <mxCell id="verUnavailable" parent="1" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#ffe6cc;strokeColor=#d79b00;" value="verificationUnavailable" vertex="1">
+          <mxGeometry height="44" width="200" x="640" y="600" as="geometry" />
+        </mxCell>
+        <mxCell id="note" parent="1" style="shape=note;whiteSpace=wrap;html=1;size=14;fillColor=#fff2cc;strokeColor=#d6b656;align=left;spacingLeft=6;fontSize=11;" value="&lt;b&gt;Guards (my variables)&lt;/b&gt;&lt;br&gt;_busy: blocks double Submit&lt;br&gt;_answers[_index] == null: one answer per question&lt;br&gt;_roundId: same ID on every retry&lt;br&gt;_unresolved: locks Replay + sign-out during submitting, verifying, saveUnknown, verificationUnavailable" vertex="1">
+          <mxGeometry height="150" width="230" x="20" y="330" as="geometry" />
+        </mxCell>
+        <mxCell id="e1" edge="1" parent="1" source="signedOut" style="endArrow=classic;html=1;" target="loading" value="sign in OK">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="e2" edge="1" parent="1" source="loading" style="endArrow=classic;html=1;" target="playing" value="5 valid questions + new _roundId">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="e3" edge="1" parent="1" source="playing" style="endArrow=classic;html=1;" target="ready" value="all 5 answered">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="e4" edge="1" parent="1" source="ready" style="endArrow=classic;html=1;" target="submitting" value="Submit [!_busy]">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="e5" edge="1" parent="1" source="submitting" style="endArrow=classic;html=1;" target="verifying" value="write OK">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="e6" edge="1" parent="1" source="verifying" style="endArrow=classic;html=1;" target="verified" value="server read OK">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="e7" edge="1" parent="1" source="signedOut" style="endArrow=classic;html=1;" target="authError" value="wrong password">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="e8" edge="1" parent="1" source="loading" style="endArrow=classic;html=1;exitX=1;exitY=0.3;entryX=0;entryY=0.3;" target="requestError" value="bad API data">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="e9" edge="1" parent="1" source="requestError" style="endArrow=classic;html=1;dashed=1;exitX=0;exitY=0.7;entryX=1;entryY=0.7;" target="loading" value="Retry (wait 5s)">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="e10" edge="1" parent="1" source="submitting" style="endArrow=classic;html=1;" target="permissionDenied" value="rules denied">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="e11" edge="1" parent="1" source="submitting" style="endArrow=classic;html=1;" target="saveUnknown" value="10s timeout">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="e12" edge="1" parent="1" source="saveUnknown" style="endArrow=classic;html=1;dashed=1;edgeStyle=orthogonalEdgeStyle;exitX=1;exitY=0.5;entryX=1;entryY=0.5;" target="verified" value="check server: doc found">
+          <mxGeometry relative="1" as="geometry">
+            <Array as="points">
+              <mxPoint x="870" y="502" />
+              <mxPoint x="870" y="712" />
+            </Array>
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="e13" edge="1" parent="1" source="verifying" style="endArrow=classic;html=1;exitX=1;exitY=0.3;entryX=0;entryY=0.3;" target="verUnavailable" value="read failed">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="e14" edge="1" parent="1" source="verUnavailable" style="endArrow=classic;html=1;dashed=1;exitX=0;exitY=0.8;entryX=1;entryY=0.9;" target="verifying" value="retry READ only (same _roundId)">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="e15" edge="1" parent="1" source="verified" style="endArrow=classic;html=1;edgeStyle=orthogonalEdgeStyle;exitX=0;exitY=0.5;entryX=0;entryY=0.5;" target="loading" value="Replay [!_unresolved]">
+          <mxGeometry relative="1" as="geometry">
+            <Array as="points">
+              <mxPoint x="290" y="712" />
+              <mxPoint x="290" y="162" />
+            </Array>
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="e16" edge="1" parent="1" source="verified" style="endArrow=classic;html=1;edgeStyle=orthogonalEdgeStyle;exitX=0.25;exitY=1;entryX=0;entryY=0.5;" target="signedOut" value="Sign out [!_unresolved]">
+          <mxGeometry relative="1" as="geometry">
+            <Array as="points">
+              <mxPoint x="385" y="770" />
+              <mxPoint x="270" y="770" />
+              <mxPoint x="270" y="62" />
+            </Array>
+          </mxGeometry>
+        </mxCell>
+      </root>
+    </mxGraphModel>
+  </diagram>
+</mxfile>
