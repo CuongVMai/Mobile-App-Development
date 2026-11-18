@@ -1,0 +1,29 @@
+{
+  "project_info": {
+    "project_number": "353337149548",
+    "project_id": "ica16-science-signal",
+    "storage_bucket": "ica16-science-signal.firebasestorage.app"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:353337149548:android:b2e94372347f845ce5b049",
+        "android_client_info": {
+          "package_name": "com.example.ica16_science_signal"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyDNoteHqkorRuqBt_i9-2EbScZgx7nyqQM"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

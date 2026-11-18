@@ -5,6 +5,8 @@ void main() {
 }
 
 class MyApp extends StatelessWidget {
+  const MyApp({super.key});
+
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
@@ -168,7 +170,7 @@ class __TabsNonScrollableDemoState extends State<_TabsNonScrollableDemo>
                   child: ListTile(
                     leading: Icon(Icons.flutter_dash),
                     title: Text('Item 1'),
-                    subtitle: Text('Details displayed inside a Card'),
+                    subtitle: Text('Apple'),
                   ),
                 ),
 
@@ -178,7 +180,7 @@ class __TabsNonScrollableDemoState extends State<_TabsNonScrollableDemo>
                   child: ListTile(
                     leading: Icon(Icons.star),
                     title: Text('Item 2'),
-                    subtitle: Text('Another item inside the ListView'),
+                    subtitle: Text('Banana'),
                   ),
                 ),
 
@@ -188,7 +190,7 @@ class __TabsNonScrollableDemoState extends State<_TabsNonScrollableDemo>
                   child: ListTile(
                     leading: Icon(Icons.favorite),
                     title: Text('Item 3'),
-                    subtitle: Text('One more Card in Tab 4'),
+                    subtitle: Text('Cherry'),
                   ),
                 ),
               ],

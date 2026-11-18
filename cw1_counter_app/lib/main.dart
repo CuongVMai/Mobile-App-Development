@@ -1,3 +1,4 @@
+
 import 'package:flutter/material.dart';
 
 void main() {
@@ -9,7 +10,12 @@ class CounterImageToggleApp extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return const HomePage();
+    return MaterialApp(
+      title: 'CW1 Counter & Toggle',
+      theme: ThemeData.light(),
+      darkTheme: ThemeData.dark(),
+      home: const HomePage(),
+    );
   }
 }
 
@@ -20,11 +26,8 @@ class HomePage extends StatefulWidget {
   State<HomePage> createState() => _HomePageState();
 }
 
-class _HomePageState extends State<HomePage>
-    with SingleTickerProviderStateMixin {
-  // State variables
+class _HomePageState extends State<HomePage> with SingleTickerProviderStateMixin {
   int _counter = 0;
-  int _step = 1;
   bool _isDark = false;
   bool _isFirstImage = true;
 
@@ -34,13 +37,10 @@ class _HomePageState extends State<HomePage>
   @override
   void initState() {
     super.initState();
-
     _controller = AnimationController(
       duration: const Duration(milliseconds: 500),
       vsync: this,
-      value: 1.0,
     );
-
     _fade = CurvedAnimation(parent: _controller, curve: Curves.easeInOut);
   }
 
@@ -51,53 +51,25 @@ class _HomePageState extends State<HomePage>
   }
 
   void _incrementCounter() {
-    setState(() {
-      _counter += _step;
-    });
-  }
-
-  void _decrementCounter() {
-    setState(() {
-      _counter -= _step;
-
-      // Prevents the counter from going below zero
-      if (_counter < 0) {
-        _counter = 0;
-      }
-    });
-  }
-
-  void _resetCounter() {
-    setState(() {
-      _counter = 0;
-    });
-  }
-
-  void _changeStep(int newStep) {
-    setState(() {
-      _step = newStep;
-    });
+    setState(() => _counter++);
   }
 
   void _toggleTheme() {
-    setState(() {
-      _isDark = !_isDark;
-    });
+    setState(() => _isDark = !_isDark);
   }
 
   void _toggleImage() {
-    _controller.forward(from: 0);
-
-    setState(() {
-      _isFirstImage = !_isFirstImage;
-    });
+    if (_isFirstImage) {
+      _controller.forward();
+    } else {
+      _controller.reverse();
+    }
+    setState(() => _isFirstImage = !_isFirstImage);
   }
 
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
-      title: 'CW1 Counter & Toggle',
-      debugShowCheckedModeBanner: false,
       themeMode: _isDark ? ThemeMode.dark : ThemeMode.light,
       theme: ThemeData.light(),
       darkTheme: ThemeData.dark(),
@@ -119,65 +91,12 @@ class _HomePageState extends State<HomePage>
                 'Counter: $_counter',
                 style: Theme.of(context).textTheme.headlineMedium,
               ),
-
               const SizedBox(height: 12),
-
-              Text(
-                'Current step: +$_step',
-                style: Theme.of(context).textTheme.titleMedium,
+              ElevatedButton(
+                onPressed: _incrementCounter,
+                child: const Text('Increment'),
               ),
-
-              const SizedBox(height: 12),
-
-              // Step selector buttons
-              Row(
-                mainAxisAlignment: MainAxisAlignment.center,
-                children: [
-                  ChoiceChip(
-                    label: const Text('+1'),
-                    selected: _step == 1,
-                    onSelected: (_) => _changeStep(1),
-                  ),
-                  const SizedBox(width: 8),
-                  ChoiceChip(
-                    label: const Text('+5'),
-                    selected: _step == 5,
-                    onSelected: (_) => _changeStep(5),
-                  ),
-                  const SizedBox(width: 8),
-                  ChoiceChip(
-                    label: const Text('+10'),
-                    selected: _step == 10,
-                    onSelected: (_) => _changeStep(10),
-                  ),
-                ],
-              ),
-
-              const SizedBox(height: 16),
-
-              // Counter controls
-              Row(
-                mainAxisAlignment: MainAxisAlignment.center,
-                children: [
-                  ElevatedButton(
-                    onPressed: _counter == 0 ? null : _decrementCounter,
-                    child: Text('-$_step'),
-                  ),
-                  const SizedBox(width: 8),
-                  ElevatedButton(
-                    onPressed: _incrementCounter,
-                    child: Text('+$_step'),
-                  ),
-                  const SizedBox(width: 8),
-                  ElevatedButton(
-                    onPressed: _counter == 0 ? null : _resetCounter,
-                    child: const Text('Reset'),
-                  ),
-                ],
-              ),
-
               const SizedBox(height: 24),
-
               FadeTransition(
                 opacity: _fade,
                 child: Image.asset(
@@ -187,9 +106,7 @@ class _HomePageState extends State<HomePage>
                   fit: BoxFit.cover,
                 ),
               ),
-
               const SizedBox(height: 12),
-
               ElevatedButton(
                 onPressed: _toggleImage,
                 child: const Text('Toggle Image'),

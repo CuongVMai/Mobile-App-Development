@@ -68,6 +68,7 @@ class ControlDeckScreen extends StatefulWidget {
 
 class _ControlDeckScreenState extends State<ControlDeckScreen> {
   // --- Mutable State Variables (Day 3 Core Concept!) ---
+  bool isPressed = false;
   int totalTaps = 0; // Increments on every button press
   double powerLevel = 65.0; // Controlled by the interactive slider
   String systemStatus = "READY"; // Displays latest activated command
@@ -126,7 +127,7 @@ class _ControlDeckScreenState extends State<ControlDeckScreen> {
                 borderRadius: BorderRadius.circular(20),
                 boxShadow: [
                   BoxShadow(
-                    color: Colors.black.withOpacity(widget.isDark ? 0.3 : 0.08),
+                    color: Colors.black.withValues(alpha: widget.isDark ? 0.3 : 0.08),
                     blurRadius: 15,
                     offset: const Offset(0, 5),
                   ),
@@ -160,7 +161,7 @@ class _ControlDeckScreenState extends State<ControlDeckScreen> {
                   Container(
                     width: 1,
                     height: 40,
-                    color: Colors.grey.withOpacity(0.3),
+                    color: Colors.grey.withValues(alpha: 0.3),
                   ),
                   // Energy / Power Level Indicator
                   Column(
@@ -252,7 +253,7 @@ class _ControlDeckScreenState extends State<ControlDeckScreen> {
                   : powerLevel > 30
                   ? Colors.orange
                   : Colors.red,
-              inactiveColor: Colors.grey.withOpacity(0.3),
+              inactiveColor: Colors.grey.withValues(alpha: 0.3),
               // setState updates powerLevel immediately during slider drag
               onChanged: (newVal) => setState(() => powerLevel = newVal),
             ),
@@ -292,7 +293,6 @@ class TactileButton extends StatefulWidget {
 
 class _TactileButtonState extends State<TactileButton> {
   // Local boolean state tracking whether button is currently being held down
-  bool isPressed = false;
 
   @override
   Widget build(BuildContext context) {
@@ -327,12 +327,12 @@ class _TactileButtonState extends State<TactileButton> {
               ? [
                   // Pressed (Sunken) Shadow Offsets
                   BoxShadow(
-                    color: darkShadow.withOpacity(0.5),
+                    color: darkShadow.withValues(alpha: 0.5),
                     offset: const Offset(2, 2),
                     blurRadius: 4,
                   ),
                   BoxShadow(
-                    color: lightShadow.withOpacity(0.5),
+                    color: lightShadow.withValues(alpha: 0.5),
                     offset: const Offset(-2, -2),
                     blurRadius: 4,
                   ),
@@ -340,12 +340,12 @@ class _TactileButtonState extends State<TactileButton> {
               : [
                   // Unpressed (Elevated) Shadow Offsets
                   BoxShadow(
-                    color: darkShadow.withOpacity(0.7),
+                    color: darkShadow.withValues(alpha: 0.7),
                     offset: const Offset(8, 8),
                     blurRadius: 16,
                   ),
                   BoxShadow(
-                    color: lightShadow.withOpacity(0.9),
+                    color: lightShadow.withValues(alpha: 0.9),
                     offset: const Offset(-8, -8),
                     blurRadius: 16,
                   ),
